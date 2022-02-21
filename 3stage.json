@@ -1,0 +1,35 @@
+{
+  "lossTolerance": 0,
+  "maxEcmpWidth": 0,
+  "overlay": "OVERLAY_TYPE_NONE",
+
+      "racks": [
+        {
+          "type": {
+            "displayName": "rack1",
+            "accessPorts": [
+              {
+                "count": 20,
+                "speed": 40,
+                "formFactor": "ANY_PORT_FORM_FACTOR"
+              }
+            ],
+            "allowBreakout": true,
+            "subscriptionRatio": 0,
+            "leafCount": 2,
+            "power": {
+              "current": "ANY_CURRENT_TYPE",
+              "limit": 0
+            },
+            "airflow": {
+              "direction": "ANY"
+            },
+            "overlay": "OVERLAY_TYPE_NONE"
+          },
+          "count": 5,
+          "additionalCount": 0
+        }
+     ],
+  "podBased": false,
+  "apstraSupported": false
+}
