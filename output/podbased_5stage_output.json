@@ -1,0 +1,3162 @@
+{
+  "status": "STATUS_COMPLETE",
+  "design": {
+    "name": "75435a3c-917d-4904-a5c4-59415d7c6227",
+    "tierCount": 3,
+    "attributes": {
+      "AccessPortCount": "200",
+      "DeviceCount": "14",
+      "LinkCount": "208",
+      "LinkSpeed": "100",
+      "RackCount": "5",
+      "RackGrowth": "3",
+      "Summary": "This 5-stage, IP-only fabric design provides physical connectivity to 5 racks, and allows for expansion to as many as 8 racks (60.0% growth) in the future.",
+      "TotalPowerMaximum": "11050",
+      "TotalPowerTypical": "7066"
+    },
+    "elements": {
+      "transit": [
+        {
+          "name": "/transits/superspine",
+          "displayName": "SuperSpine",
+          "tier": 2,
+          "deviceCount": 2,
+          "deviceSpec": {
+            "fabricPorts": [
+              {
+                "count": 64,
+                "speed": 100,
+                "formFactor": "ANY_PORT_FORM_FACTOR"
+              }
+            ],
+            "accessPorts": [],
+            "subscriptionRatioActual": 0,
+            "subscriptionRatioTarget": 1,
+            "overlay": "OVERLAY_TYPE_NONE",
+            "role": "IP Forwarder",
+            "selected": {
+              "sku": "QFX5210-64C-AFI2",
+              "displayName": "QFX5210-64C",
+              "portOccupancy": [
+                {
+                  "formFactor": "QSFP28",
+                  "occupied": 64,
+                  "vacant": 0
+                }
+              ],
+              "portGrowth": []
+            }
+          },
+          "neighbors": []
+        }
+      ],
+      "pods": [
+        {
+          "name": "/pods/pod1",
+          "displayName": "pod1",
+          "tier": 1,
+          "count": 1,
+          "transit": [
+            {
+              "name": "/transits/spine",
+              "displayName": "Spine",
+              "tier": 1,
+              "deviceCount": 2,
+              "deviceSpec": {
+                "fabricPorts": [
+                  {
+                    "count": 104,
+                    "speed": 100,
+                    "formFactor": "ANY_PORT_FORM_FACTOR"
+                  }
+                ],
+                "accessPorts": [],
+                "subscriptionRatioActual": 0,
+                "subscriptionRatioTarget": 1,
+                "overlay": "OVERLAY_TYPE_NONE",
+                "role": "IP Forwarder",
+                "selected": {
+                  "sku": "QFX5220-128C-AFO",
+                  "displayName": "QFX5220-128C",
+                  "portOccupancy": [
+                    {
+                      "formFactor": "QSFP28",
+                      "occupied": 104,
+                      "vacant": 24
+                    },
+                    {
+                      "formFactor": "SFP28",
+                      "occupied": 0,
+                      "vacant": 2
+                    }
+                  ],
+                  "portGrowth": []
+                }
+              },
+              "neighbors": [
+                {
+                  "neighbor": "/transits/superspine",
+                  "linkCount": 32,
+                  "linkSpeed": 100
+                }
+              ]
+            }
+          ],
+          "racks": [
+            {
+              "name": "/racks/rack1",
+              "displayName": "rack1",
+              "tier": 0,
+              "count": 5,
+              "growth": 3,
+              "deviceCount": 2,
+              "deviceSpec": {
+                "fabricPorts": [
+                  {
+                    "count": 8,
+                    "speed": 100,
+                    "formFactor": "ANY_PORT_FORM_FACTOR"
+                  }
+                ],
+                "accessPorts": [
+                  {
+                    "count": 20,
+                    "speed": 40,
+                    "formFactor": "ANY_PORT_FORM_FACTOR"
+                  }
+                ],
+                "subscriptionRatioActual": 1,
+                "subscriptionRatioTarget": 1,
+                "overlay": "OVERLAY_TYPE_NONE",
+                "role": "IP Forwarder",
+                "selected": {
+                  "sku": "QFX5120-32C-AFI",
+                  "displayName": "QFX5120-32C",
+                  "portOccupancy": [
+                    {
+                      "formFactor": "QSFP28",
+                      "occupied": 28,
+                      "vacant": 4
+                    },
+                    {
+                      "formFactor": "SFPP",
+                      "occupied": 0,
+                      "vacant": 2
+                    }
+                  ],
+                  "portGrowth": [
+                    {
+                      "count": 0,
+                      "speed": 40,
+                      "formFactor": "ANY_PORT_FORM_FACTOR"
+                    }
+                  ]
+                }
+              },
+              "neighbors": [
+                {
+                  "neighbor": "/transits/spine",
+                  "linkCount": 4,
+                  "linkSpeed": 100
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "racks": []
+    },
+    "devices": {
+      "QFX5120-32C-AFI": {
+        "sku": "QFX5120-32C-AFI",
+        "features": {
+          "overlay": "OVERLAY_TYPE_EVPN_VXLAN_BRIDGING_ROUTING"
+        },
+        "physical": {
+          "rackUnits": 1,
+          "airflow": {
+            "direction": "BACK_TO_FRONT"
+          },
+          "power": {
+            "maximum": 515,
+            "typical": 380,
+            "currentType": "AC"
+          }
+        },
+        "ports": [
+          {
+            "name": "xe-0/0/0",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/1",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/2",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/3",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/4",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 4
+          },
+          {
+            "name": "xe-0/0/5",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 5
+          },
+          {
+            "name": "xe-0/0/6",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 6
+          },
+          {
+            "name": "xe-0/0/7",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 7
+          },
+          {
+            "name": "xe-0/0/8",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 8
+          },
+          {
+            "name": "xe-0/0/9",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 9
+          },
+          {
+            "name": "xe-0/0/10",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 10
+          },
+          {
+            "name": "xe-0/0/11",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 11
+          },
+          {
+            "name": "xe-0/0/12",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 12
+          },
+          {
+            "name": "xe-0/0/13",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 13
+          },
+          {
+            "name": "xe-0/0/14",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 14
+          },
+          {
+            "name": "xe-0/0/15",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 15
+          },
+          {
+            "name": "xe-0/0/16",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 16
+          },
+          {
+            "name": "xe-0/0/17",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 17
+          },
+          {
+            "name": "xe-0/0/18",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 18
+          },
+          {
+            "name": "xe-0/0/19",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 19
+          },
+          {
+            "name": "xe-0/0/20",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 20
+          },
+          {
+            "name": "xe-0/0/21",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 21
+          },
+          {
+            "name": "xe-0/0/22",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 22
+          },
+          {
+            "name": "xe-0/0/23",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 23
+          },
+          {
+            "name": "xe-0/0/24",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 24
+          },
+          {
+            "name": "xe-0/0/25",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 25
+          },
+          {
+            "name": "xe-0/0/26",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 26
+          },
+          {
+            "name": "xe-0/0/27",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 27
+          },
+          {
+            "name": "xe-0/0/28",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 28
+          },
+          {
+            "name": "xe-0/0/29",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 29
+          },
+          {
+            "name": "xe-0/0/30",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 30
+          },
+          {
+            "name": "xe-0/0/31",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "50": 2
+            },
+            "portGroup": 31
+          },
+          {
+            "name": "xe-0/0/32",
+            "formFactor": "SFPP",
+            "speeds": [
+              10
+            ],
+            "breakouts": {},
+            "portGroup": 32
+          },
+          {
+            "name": "xe-0/0/33",
+            "formFactor": "SFPP",
+            "speeds": [
+              10
+            ],
+            "breakouts": {},
+            "portGroup": 33
+          }
+        ],
+        "info": {
+          "description": "QFX5120-32C, 32x100GbE, 1 U, AC airflow in",
+          "productPage": "https://www.juniper.net/us/en/products/switches/qfx-series/qfx5120-data-center-switches.html",
+          "productImage": "https://www.juniper.net/documentation/images/g100345.png"
+        }
+      },
+      "QFX5210-64C-AFI2": {
+        "sku": "QFX5210-64C-AFI2",
+        "features": {
+          "overlay": "OVERLAY_TYPE_EVPN_VXLAN_BRIDGING_ROUTING"
+        },
+        "physical": {
+          "rackUnits": 2,
+          "airflow": {
+            "direction": "BACK_TO_FRONT"
+          },
+          "power": {
+            "maximum": 960,
+            "typical": 200,
+            "currentType": "AC"
+          }
+        },
+        "ports": [
+          {
+            "name": "xe-0/0/0",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/1",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/2",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/3",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/4",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/5",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/6",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/7",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/8",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/9",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/10",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/11",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/12",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/13",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/14",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/15",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/16",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/17",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/18",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/19",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/20",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/21",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/22",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/23",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/24",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/25",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/26",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/27",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/28",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/29",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/30",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/31",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/32",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/33",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/34",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/35",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/36",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/37",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/38",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/39",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/40",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/41",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/42",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/43",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/44",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/45",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/46",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/47",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/48",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/49",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/50",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/51",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/52",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/53",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/54",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/55",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/56",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/57",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/58",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/59",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/60",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/61",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/62",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/63",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "10": 4,
+              "25": 4,
+              "50": 2
+            },
+            "portGroup": 3
+          }
+        ],
+        "info": {
+          "description": "QFX5210, 64 QSFP+/QSFP28 ports, reduced latency, redundant fans, 2 AC power supplies, back-to-front airflow",
+          "productPage": "https://www.juniper.net/us/en/products/switches/qfx-series/qfx5210-data-center-switches.html",
+          "productImage": "https://www.juniper.net/content/dam/www/assets/images/us/en/products/switches/qfx-series/datasheets/1000633-fig4.png/_jcr_content/renditions/cq5dam.web.1280.1280.png"
+        }
+      },
+      "QFX5220-128C-AFO": {
+        "sku": "QFX5220-128C-AFO",
+        "features": {
+          "overlay": "OVERLAY_TYPE_NONE"
+        },
+        "physical": {
+          "rackUnits": 4,
+          "airflow": {
+            "direction": "FRONT_TO_BACK"
+          },
+          "power": {
+            "maximum": 1990,
+            "typical": 1433,
+            "currentType": "AC"
+          }
+        },
+        "ports": [
+          {
+            "name": "xe-0/0/0",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/1",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/2",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/3",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/4",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 0
+          },
+          {
+            "name": "xe-0/0/5",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/6",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/7",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/8",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 1
+          },
+          {
+            "name": "xe-0/0/9",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/10",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/11",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/12",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 2
+          },
+          {
+            "name": "xe-0/0/13",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/14",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/15",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/16",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 3
+          },
+          {
+            "name": "xe-0/0/17",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 4
+          },
+          {
+            "name": "xe-0/0/18",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 4
+          },
+          {
+            "name": "xe-0/0/19",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 4
+          },
+          {
+            "name": "xe-0/0/20",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 4
+          },
+          {
+            "name": "xe-0/0/21",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 5
+          },
+          {
+            "name": "xe-0/0/22",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 5
+          },
+          {
+            "name": "xe-0/0/23",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 5
+          },
+          {
+            "name": "xe-0/0/24",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 5
+          },
+          {
+            "name": "xe-0/0/25",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 6
+          },
+          {
+            "name": "xe-0/0/26",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 6
+          },
+          {
+            "name": "xe-0/0/27",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 6
+          },
+          {
+            "name": "xe-0/0/28",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 6
+          },
+          {
+            "name": "xe-0/0/29",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 7
+          },
+          {
+            "name": "xe-0/0/30",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 7
+          },
+          {
+            "name": "xe-0/0/31",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 7
+          },
+          {
+            "name": "xe-0/0/32",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 7
+          },
+          {
+            "name": "xe-0/0/33",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 8
+          },
+          {
+            "name": "xe-0/0/34",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 8
+          },
+          {
+            "name": "xe-0/0/35",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 8
+          },
+          {
+            "name": "xe-0/0/36",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 8
+          },
+          {
+            "name": "xe-0/0/37",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 9
+          },
+          {
+            "name": "xe-0/0/38",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 9
+          },
+          {
+            "name": "xe-0/0/39",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 9
+          },
+          {
+            "name": "xe-0/0/40",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 9
+          },
+          {
+            "name": "xe-0/0/41",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 10
+          },
+          {
+            "name": "xe-0/0/42",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 10
+          },
+          {
+            "name": "xe-0/0/43",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 10
+          },
+          {
+            "name": "xe-0/0/44",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 10
+          },
+          {
+            "name": "xe-0/0/45",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 11
+          },
+          {
+            "name": "xe-0/0/46",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 11
+          },
+          {
+            "name": "xe-0/0/47",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 11
+          },
+          {
+            "name": "xe-0/0/48",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 11
+          },
+          {
+            "name": "xe-0/0/49",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 12
+          },
+          {
+            "name": "xe-0/0/50",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 12
+          },
+          {
+            "name": "xe-0/0/51",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 12
+          },
+          {
+            "name": "xe-0/0/52",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 12
+          },
+          {
+            "name": "xe-0/0/53",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 13
+          },
+          {
+            "name": "xe-0/0/54",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 13
+          },
+          {
+            "name": "xe-0/0/55",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 13
+          },
+          {
+            "name": "xe-0/0/56",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 13
+          },
+          {
+            "name": "xe-0/0/57",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 14
+          },
+          {
+            "name": "xe-0/0/58",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 14
+          },
+          {
+            "name": "xe-0/0/59",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 14
+          },
+          {
+            "name": "xe-0/0/60",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 14
+          },
+          {
+            "name": "xe-0/0/61",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 15
+          },
+          {
+            "name": "xe-0/0/62",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 15
+          },
+          {
+            "name": "xe-0/0/63",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 15
+          },
+          {
+            "name": "xe-0/0/64",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 15
+          },
+          {
+            "name": "xe-0/0/65",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 16
+          },
+          {
+            "name": "xe-0/0/66",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 16
+          },
+          {
+            "name": "xe-0/0/67",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 16
+          },
+          {
+            "name": "xe-0/0/68",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 16
+          },
+          {
+            "name": "xe-0/0/69",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 17
+          },
+          {
+            "name": "xe-0/0/70",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 17
+          },
+          {
+            "name": "xe-0/0/71",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 17
+          },
+          {
+            "name": "xe-0/0/72",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 17
+          },
+          {
+            "name": "xe-0/0/73",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 18
+          },
+          {
+            "name": "xe-0/0/74",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 18
+          },
+          {
+            "name": "xe-0/0/75",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 18
+          },
+          {
+            "name": "xe-0/0/76",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 18
+          },
+          {
+            "name": "xe-0/0/77",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 19
+          },
+          {
+            "name": "xe-0/0/78",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 19
+          },
+          {
+            "name": "xe-0/0/79",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 19
+          },
+          {
+            "name": "xe-0/0/80",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 19
+          },
+          {
+            "name": "xe-0/0/81",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 20
+          },
+          {
+            "name": "xe-0/0/82",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 20
+          },
+          {
+            "name": "xe-0/0/83",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 20
+          },
+          {
+            "name": "xe-0/0/84",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 20
+          },
+          {
+            "name": "xe-0/0/85",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 21
+          },
+          {
+            "name": "xe-0/0/86",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 21
+          },
+          {
+            "name": "xe-0/0/87",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 21
+          },
+          {
+            "name": "xe-0/0/88",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 21
+          },
+          {
+            "name": "xe-0/0/89",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 22
+          },
+          {
+            "name": "xe-0/0/90",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 22
+          },
+          {
+            "name": "xe-0/0/91",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 22
+          },
+          {
+            "name": "xe-0/0/92",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 22
+          },
+          {
+            "name": "xe-0/0/93",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 23
+          },
+          {
+            "name": "xe-0/0/94",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 23
+          },
+          {
+            "name": "xe-0/0/95",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 23
+          },
+          {
+            "name": "xe-0/0/96",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 23
+          },
+          {
+            "name": "xe-0/0/97",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 24
+          },
+          {
+            "name": "xe-0/0/98",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 24
+          },
+          {
+            "name": "xe-0/0/99",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 24
+          },
+          {
+            "name": "xe-0/0/100",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 24
+          },
+          {
+            "name": "xe-0/0/101",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 25
+          },
+          {
+            "name": "xe-0/0/102",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 25
+          },
+          {
+            "name": "xe-0/0/103",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 25
+          },
+          {
+            "name": "xe-0/0/104",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 25
+          },
+          {
+            "name": "xe-0/0/105",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 26
+          },
+          {
+            "name": "xe-0/0/106",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 26
+          },
+          {
+            "name": "xe-0/0/107",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 26
+          },
+          {
+            "name": "xe-0/0/108",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 26
+          },
+          {
+            "name": "xe-0/0/109",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 27
+          },
+          {
+            "name": "xe-0/0/110",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 27
+          },
+          {
+            "name": "xe-0/0/111",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 27
+          },
+          {
+            "name": "xe-0/0/112",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 27
+          },
+          {
+            "name": "xe-0/0/113",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 28
+          },
+          {
+            "name": "xe-0/0/114",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 28
+          },
+          {
+            "name": "xe-0/0/115",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 28
+          },
+          {
+            "name": "xe-0/0/116",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 28
+          },
+          {
+            "name": "xe-0/0/117",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 29
+          },
+          {
+            "name": "xe-0/0/118",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 29
+          },
+          {
+            "name": "xe-0/0/119",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 29
+          },
+          {
+            "name": "xe-0/0/120",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 29
+          },
+          {
+            "name": "xe-0/0/121",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 30
+          },
+          {
+            "name": "xe-0/0/122",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 30
+          },
+          {
+            "name": "xe-0/0/123",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 30
+          },
+          {
+            "name": "xe-0/0/124",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 30
+          },
+          {
+            "name": "xe-0/0/125",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 31
+          },
+          {
+            "name": "xe-0/0/126",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 31
+          },
+          {
+            "name": "xe-0/0/127",
+            "formFactor": "QSFP28",
+            "speeds": [
+              40,
+              100
+            ],
+            "breakouts": {
+              "25": 4
+            },
+            "portGroup": 31
+          },
+          {
+            "name": "xe-0/0/128",
+            "formFactor": "SFP28",
+            "speeds": [
+              1,
+              10
+            ],
+            "breakouts": {},
+            "portGroup": 32
+          },
+          {
+            "name": "xe-0/0/129",
+            "formFactor": "SFP28",
+            "speeds": [
+              1,
+              10
+            ],
+            "breakouts": {},
+            "portGroup": 33
+          }
+        ],
+        "info": {
+          "description": "QFX5220 (hardware with base software), 128 QSFP+/QSFP28 ports, redundant fans, 4 AC power supplies, front-to-back airflow",
+          "productPage": "https://www.juniper.net/us/en/products/switches/qfx-series/qfx5220-data-center-switches.html",
+          "productImage": "https://www.juniper.net/documentation/us/en/hardware/qfx5220/images/g100562.png"
+        }
+      }
+    }
+  },
+  "error": ""
+}
+
